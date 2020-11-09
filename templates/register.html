@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <form class="field has-text-centered section" method="POST" action="{{ url_for('register') }}">
+        {% include 'notifications.html' %}
+        <img src="{{ url_for('static', filename = 'images/register.gif') }}" alt="" />
+        <div class="field">
+            <input class="input" type="text" name="name" placeholder="Your name">
+        </div>
+        <div class="field">
+            <input class="input" type="text" name="username" placeholder="Username">
+        </div>
+        <div class="field">
+            <input class="input" type="password" name="password" placeholder="Password">
+        </div>
+        <button class="button is-link is-fullwidth">Register</button>
+    </form>
+{% endblock %}

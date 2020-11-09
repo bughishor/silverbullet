@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <div class="has-text-centered section">
+        <img src="{{ url_for('static', filename = 'images/happy.gif') }}" alt="" />
+        <h1 class="heading mt-5 is-size-3">Welcome {{ current_user.name }}</h1>
+        <p>The time now: <span id="time"></span></p>
+        <p>Your last login: <span>{{ current_user.last_login.strftime('%A, %d %B %Y, %H:%M:%S') }}</span></p>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        (function () {
+            function checkTime(i) {
+                return i < 10 ? "0" + i : i;
+            }
+
+            function startTime() {
+                var today = new Date(),
+                    h = checkTime(today.getHours()),
+                    m = checkTime(today.getMinutes()),
+                    s = checkTime(today.getSeconds());
+
+                document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+
+                setTimeout(function () {
+                    startTime()
+                }, 500);
+            }
+            startTime();
+        })();
+    </script>
+{% endblock %}
+

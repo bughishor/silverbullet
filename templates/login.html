@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <form class="field has-text-centered section" method="POST" action="{{ url_for('login') }}">
+        {% include 'notifications.html' %}
+        <img src="{{ url_for('static', filename = 'images/come_in.gif') }}" alt="" />
+        <div class="field">
+            <input class="input" type="text" name="username" placeholder="Username">
+        </div>
+        <div class="field">
+            <input class="input" type="password" name="password" placeholder="Password">
+        </div>
+        <button class="button is-primary is-fullwidth">Login</button>
+    </form>
+{% endblock %}
